@@ -1,0 +1,16 @@
+{
+	"ImportPath": "github.com/Tog-Hackerspace/switchifier",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v74",
+	"Deps": [
+		{
+			"ImportPath": "github.com/golang/glog",
+			"Rev": "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-sqlite3",
+			"Comment": "v1.1.0-69-g38ee283",
+			"Rev": "38ee283dabf11c9cbdb968eebd79b1fa7acbabe6"
+		}
+	]
+}
