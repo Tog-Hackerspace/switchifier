@@ -24,6 +24,8 @@ Here's a few useful flags:
  - `--db_path`: Path to the SQLite database. The default is `switchifier.db` in the current working directory.
  - `--bind_address`: Host/port to bind to. By default `:8080`, so port 8080 on all interfaces.
  - `--secret`: The preshared secret used to authenticate the client.
+ - `--secret_path`: A file to load the preshared secret from (`--secret` is ignored).
+ - `--logtostderr`: Log program output to stderr.
 
 
 Future work

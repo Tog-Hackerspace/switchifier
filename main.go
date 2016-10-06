@@ -29,7 +29,9 @@ import (
 	"database/sql"
 	"encoding/json"
 	"flag"
+	"io/ioutil"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
@@ -190,15 +192,29 @@ var (
 	dbPath      string
 	bindAddress string
 	secret      string
+	secret_path string
 )
 
 func main() {
 	flag.StringVar(&dbPath, "db_path", "./switchifier.db", "Path to the SQlite3 database.")
 	flag.StringVar(&bindAddress, "bind_address", ":8080", "Address to bind HTTP server to.")
 	flag.StringVar(&secret, "secret", "changeme", "Secret for state updates.")
+	flag.StringVar(&secret_path, "secret_path", "", "File with secret for state updates.")
 	flag.Parse()
 	if dbPath == "" {
 		glog.Exit("Please provide a database path.")
+	}
+	if secret_path != "" {
+		file, err := os.Open(secret_path)
+		if err != nil {
+			glog.Exit(err)
+		}
+		secretData, err := ioutil.ReadAll(file)
+		if err != nil {
+			glog.Exit(err)
+		}
+		secretParts := strings.Split(string(secretData), "\n")
+		secret = secretParts[0]
 	}
 	glog.Infof("Starting switchifier...")
 
