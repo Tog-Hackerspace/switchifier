@@ -72,6 +72,7 @@ SELECT state FROM switch_state_change
 	ORDER BY timestamp DESC
 	LIMIT 1;`
 	res, err := s.db.Query(sqlStmt)
+	defer res.Close()
 	if err != nil {
 		return err
 	}
@@ -166,6 +167,7 @@ func (s *switchApp) HandleAPIGet(w http.ResponseWriter, r *http.Request) {
 ORDER BY timestamp DESC
 LIMIT 1`
 	data, err := s.db.Query(sqlStmt)
+	defer data.Close()
 	if err != nil {
 		resp.Okay = false
 		resp.Error = "Database error."
