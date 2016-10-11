@@ -225,6 +225,7 @@ func main() {
 		glog.Exit(err)
 	}
 	defer db.Close()
+	db.SetMaxOpenConns(1)
 
 	switchApp := newSwitchApp(db)
 	if err = switchApp.RunSchemaUpdate(); err != nil {
