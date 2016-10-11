@@ -72,7 +72,6 @@ SELECT state FROM switch_state_change
 	ORDER BY timestamp DESC
 	LIMIT 1;`
 	res, err := s.db.Query(sqlStmt)
-	defer res.Close()
 	if err != nil {
 		return err
 	}
@@ -85,12 +84,14 @@ SELECT state FROM switch_state_change
 		// Otherwise store if there was a state change
 		var lastState bool
 		if err = res.Scan(&lastState); err != nil {
+			res.Close()
 			return err
 		}
 		if lastState != state {
 			shouldStore = true
 		}
 	}
+	res.Close()
 	if !shouldStore {
 		return nil
 	}
