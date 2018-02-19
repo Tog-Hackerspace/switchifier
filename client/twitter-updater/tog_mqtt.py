@@ -103,7 +103,7 @@ if __name__ == '__main__':
             'twitter_consumer_secret': env.get('TWITTER_CONSUMER_SECRET', 'missing'),  # noqa: E501
             'twitter_access_token_key': env.get('TWITTER_ACCESS_TOKEN', 'missing'),  # noqa: E501
             'twitter_access_token_secret': env.get('TWITTER_ACCESS_TOKEN_SECRET', 'missing'),  # noqa: E501
-            'twitter_id': env.get('TWITTER_ID', 5723212),
+            'twitter_id': env.get('TWITTER_ID', 76108817),
             'twitter_bio_message': env.get('TWITTER_BIO_MESSAGE', ' Space is: '),  # noqa: E501
             'mqtt_host': env.get('MQTT_HOST', '10.48.1.254'),
             'mqtt_port': env.get('MQTT_PORT', 1883),
